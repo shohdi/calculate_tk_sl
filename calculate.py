@@ -36,5 +36,28 @@ if __name__ == "__main__":
     print("target currency usd price : ",price_to_usd)
     print("amount to win : ",amount_to_win)
     print("amount to loss : ",amount_to_loss)
-
+    price_in_usd = entry_point * price_to_usd
+    volume_lot = volume * lot_size
+    volume_lot_price = volume_lot * price_in_usd
+    win_amount = (amount_to_win *  price_in_usd)/volume_lot_price
+    loss_amount = (amount_to_loss * price_in_usd)/volume_lot_price
+    win_amount = win_amount/price_to_usd
+    loss_amount = loss_amount/price_to_usd
+    #print(win_amount)
+    #print(loss_amount)
+    #buy
+    stoploss = entry_point - loss_amount
+    takeprofit = entry_point + win_amount
+    if direction == 2:
+        #sell
+        stoploss = entry_point + loss_amount
+        takeprofit = entry_point - win_amount
     
+    print("takeprofit : ",takeprofit)
+    print("stoploss : ",stoploss)
+        
+
+
+        
+
+
